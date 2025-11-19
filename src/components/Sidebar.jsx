@@ -12,6 +12,7 @@ import styles from '../css/sideBar.module.css';
 const SideBar = () => {
   const links = [
     { to: '/dashboard', label: 'Главная', icon: <HomeIcon />},
+    { to: '/schedule', label: 'Расписание'},
     { to: '/settings', label: 'Настройки', icon: <SettingsIcon />}
   ];
 
