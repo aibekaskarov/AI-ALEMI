@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.sidebar {
+    position: fixed;
+    width: 240px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border: 1px solid #9A9A9A;
+}
+
+.block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.head {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #9A9A9A;
+}
+
+.title {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #FDFDFD;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+}
+
+.link {
+    width: 210px;
+    height: 44px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    color: #9A9A9A;
+    background-color: transparent;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+        background-color: #cebafd;
+        color: black;
+        box-shadow: 0 0 1px rgba(0,0,0,0.3);
+    }
+    &:hover svg{
+        color: black;
+    }
+
+} 
+.link svg {
+    display: flex;
+    align-items: center;
+    color: #9A9A9A;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.active {
+    background-color: #8B5CF6;
+    color: white;
+}
+.active svg{
+    color: white;
+}
+.link.active:hover {
+    background-color: #8B5CF6; /* остаётся активным */
+    color: white;
+    box-shadow: none;          /* убираем тень */
+}
+
+.link.active:hover svg {
+    color: white;
+}
+
+
+.span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 210px;
+    height: 40px;
+    padding: 8px 16px;
+    color: #9A9A9A;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    gap: 8px;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border 0.15s;
+}
+.logout svg {
+    width: 24px;
+    height: 24px;
+    color: #FF8383;
+}
+.logout:hover {
+    background-color: 9A9A9A;
+    color: black;
+    border: 1px solid #8B5CF6;
+}
