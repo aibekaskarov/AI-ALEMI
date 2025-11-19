@@ -1,0 +1,66 @@
+{
+  "subjects": [
+    {
+      "id": 1,
+      "name": "Математика",
+      "icon_id": "math_icon",
+      "color_id": "blue"
+    }
+  ],
+  "lectures": [
+    {
+      "id": 1,
+      "name": "Алгебра",
+      "subject_id": 1,
+      "text": "Текст лекции по алгебре",
+      "estimated_time": 90
+    }
+  ],
+  "tests": [
+    {
+      "id": 1,
+      "lecture_id": 1,
+      "questions": [
+        {
+          "question": "Сколько будет 2+2?",
+          "type": "single",
+          "options": ["3", "4", "5"],
+          "correct_index": 1,
+          "points": 5
+        }
+      ]
+    }
+  ],
+  "schedules": [
+    {
+      "id": 1,
+      "week_start": "2025-11-18", 
+      "teacher_id": 1,
+      "days": [
+        {
+          "day": "Monday",
+          "lessons": [
+            {
+              "subject_id": 1,
+              "lecture_id": 1,
+              "start_time": "09:00",
+              "end_time": "10:30"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Иван Иванов",
+      "selected_subjects": [1],
+      "hours_per_week": 12,
+      "lesson_duration": 90,
+      "min_break": 15,
+      "work_start": "08:00",
+      "work_end": "17:00"
+    }
+  ]
+}
