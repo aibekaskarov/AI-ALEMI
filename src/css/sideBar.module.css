@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.sidebar {
+    position: fixed;
+    width: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #303949;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.head {
+    width: 100%;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #455064;
+}
+
+.user {
+    width: 192px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+}
+.avatar {
+    width: 48px;
+    height: 48px; /* исправлено px */
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.title {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #FDFDFD;
+}
+.role {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #9FA8B6;
+}
+
+.complex {
+    width: 248px;
+    height: 65px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #665EE9;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #4F46E5;
+    }
+    &:hover > svg {
+        transform: scale(1.2);
+    }
+}
+.complex svg {
+    width: 24px;
+    height: 24px;
+    color: #FDFDFD;
+    transition: transform 0.3s ease;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.p {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #BBB6FF;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+}
+
+.link {
+    width: 248px;
+    height: 56px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FDFDFD;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.15s;
+
+    &:hover {
+        background-color: #242B37;
+    }
+} 
+
+.active {
+    background-color: #4F46E5;
+}
+
+.span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 248px;
+    height: 40px;
+    padding: 8px 16px;
+    color: #FDFDFD;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    gap: 8px;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.logout svg {
+    width: 24px;
+    height: 24px;
+    color: #FF8383;
+}
+.logout:hover {
+    background-color: #242B37;
+}

@@ -7,7 +7,7 @@ import styles from "./css/global.module.css"
 function App() {
 
 useEffect(() => {
-    document.body.style.backgroundColor = '#DFE6EA';
+    document.body.style.backgroundColor = '#F9FAFB';
   
     return () => {
       document.body.style.backgroundColor = ''; 

@@ -1,8 +1,9 @@
 import { useRoutes, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 
-import Rooms from './pages/Dashboard';
-
+import Dashboard from './pages/Dashboard';
+import Subjects from './pages/Subjects';
+import Settings from './pages/Settings';
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -11,17 +12,11 @@ const AppRoutes = () => {
       element: <Layout />,
       children: [
         { index: true, element: <Navigate to="/dashboard" replace /> },
+        { path: 'dashboard', element: <Dashboard /> },
         { path: 'subjects', element: <Subjects /> },
+        { path: 'settings', element: <Settings /> }
       ],
-    },
-    {
-      path: '/auth/*',
-      element: <Auth />
-    },
-    {
-      path: '/auth/register',
-      element: <Register />
-    },
+    }
   ]);
 
   return routes;
