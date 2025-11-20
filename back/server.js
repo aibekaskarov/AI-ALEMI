@@ -240,12 +240,12 @@ app.post('/ai/lectures', async (req, res) => {
 
 // Генерация теста по лекции
 app.post('/ai/tests', async (req, res) => {
-    const { lectureId, questionCount = 5, difficulty = 'medium', types = ['multiple-choice'] } = req.body;
-    if (!lectureId) return res.status(400).json({ error: 'lectureId required' });
+    const { lecture_id, questionCount = 5, difficulty = 'medium', types = ['multiple-choice'] } = req.body;
+    if (!lecture_id) return res.status(400).json({ error: 'lectureId required' });
 
     try {
         const db = await readDB();
-        const lecture = db.lectures.find(l => l.id == lectureId);
+        const lecture = db.lectures.find(l => l.id == lecture_id);
         if (!lecture) return res.status(404).json({ error: 'Lecture not found' });
 
         // Предположим, что generateTestWithAI возвращает массив вопросов

@@ -3,6 +3,13 @@ const { HF_API_KEY } = require('./config.js');
 
 const MODEL = "meta-llama/Meta-Llama-3-8B-Instruct";
 
+function extractJSON(text) {
+  const first = text.indexOf('{');
+  const last = text.lastIndexOf('}');
+  if (first === -1 || last === -1) return null;
+  return text.substring(first, last + 1);
+}
+
 // ===== Универсальная функция для Chat Completions =====
 async function chatCompletion(messages, max_tokens = 1000, temperature = 0.7) {
   try {
@@ -31,18 +38,16 @@ async function chatCompletion(messages, max_tokens = 1000, temperature = 0.7) {
 
 // ===== Генерация расписания =====
 async function generateScheduleWithAI(teacher, db) {
-  const schedulePrompt = `
-Преподаватель:
-- Предметы: ${teacher.selected_subjects.map(id => {
+  const subjectsList = teacher.selected_subjects.map(id => {
     const s = db.subjects.find(sub => sub.id === id);
     return s ? s.name : "Unknown";
-  }).join(', ')}
-- Часы в неделю: ${teacher.hours_per_week}
-- Длительность урока: ${teacher.lesson_duration} минут
-- Минимальный перерыв: ${teacher.min_break} минут
-- Рабочее время: ${teacher.work_start} - ${teacher.work_end}
+  }).join(', ');
 
-Составь расписание на неделю (Monday-Friday) в формате JSON:
+  const schedulePrompt = `
+Ты — помощник по созданию учебного расписания. 
+Составь расписание на неделю (Monday-Friday) для преподавателя в формате чистого JSON без лишнего текста или пояснений. 
+Используй следующую структуру:
+
 {
   "days": [
     {
@@ -53,6 +58,13 @@ async function generateScheduleWithAI(teacher, db) {
     }
   ]
 }
+
+Информация о преподавателе:
+- Предметы: ${subjectsList}
+- Часы в неделю: ${teacher.hours_per_week}
+- Длительность урока: ${teacher.lesson_duration} минут
+- Минимальный перерыв: ${teacher.min_break} минут
+- Рабочее время: ${teacher.work_start} - ${teacher.work_end}
 `;
 
   const message = [
@@ -64,7 +76,9 @@ async function generateScheduleWithAI(teacher, db) {
 
   let scheduleJSON;
   try {
-    scheduleJSON = JSON.parse(responseText || '{}');
+    // Попытка извлечь JSON из текста AI
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    scheduleJSON = jsonMatch ? JSON.parse(jsonMatch[0]) : { days: [] };
   } catch (e) {
     console.error('Ошибка парсинга AI ответа:', e);
     scheduleJSON = { days: [] };
@@ -77,6 +91,7 @@ async function generateScheduleWithAI(teacher, db) {
     ...scheduleJSON
   };
 }
+
 
 // ===== Генерация лекции =====
 async function generateLectureWithAI(title, subject) {
@@ -94,33 +109,63 @@ async function generateLectureWithAI(title, subject) {
 
   return responseText || `Лекция по "${title}"`;
 }
-
 // ===== Генерация теста =====
-async function generateTestWithAI(lecture, { questionCount = 5, difficulty = 'medium', types = ['multiple-choice'] } = {}) {
+async function generateTestWithAI(
+  lecture,
+  { questionCount = 5, difficulty = 'medium', types = ['multiple-choice'] } = {}
+) {
   const testPrompt = `
-Создай тест по лекции "${lecture.name}" с ${questionCount} вопросами.
-Сложность: ${difficulty}.
-Типы вопросов: ${types.join(', ')}.
-Верни JSON вида:
+Ты — генератор тестов. 
+Используй строго содержание лекции ниже для генерации вопросов.
+
+ЛЕКЦИЯ:
+"""
+${lecture.text}
+"""
+
+Верни СТРОГО JSON.  
+Без текста, без описаний, без пояснений, без Markdown-блоков.
+
+СТРОГИЙ ФОРМАТ JSON:
 {
   "questions": [
-    {"question": "текст", "type": "multiple-choice", "options": ["a", "b", "c"], "answer": "a"}
+    {
+      "question": "string",
+      "type": "multiple-choice",
+      "options": ["A", "B", "C", "D"],
+      "answer": 0
+    }
   ]
 }
+
+Требования:
+- Количество вопросов: ${questionCount}
+- Сложность: ${difficulty}
+- Типы вопросов: ${types.join(', ')}
+- Все вопросы должны быть основаны ТОЛЬКО на содержании лекции.
+- Ответ ВСЕГДА должен быть индексом (числом), а не текстом.
 `;
 
   const message = [
-    { role: 'system', content: 'Ты — ассистент по созданию тестов.' },
+    { role: 'system', content: 'Ты — строгий JSON-генератор тестов. Никакого текста вне JSON.' },
     { role: 'user', content: testPrompt }
   ];
 
-  const responseText = await chatCompletion(message, 1500);
+  const responseText = await chatCompletion(message, 2500);
+
+  // --- достаём JSON ---
+  const jsonText = extractJSON(responseText);
+
+  if (!jsonText) {
+    console.error("AI не вернул JSON:", responseText);
+    return [];
+  }
 
   try {
-    const data = JSON.parse(responseText || '{}');
-    return data.questions || [];
+    const parsed = JSON.parse(jsonText);
+    return parsed.questions || [];
   } catch (e) {
-    console.error('Ошибка парсинга теста AI ответа:', e);
+    console.error("Ошибка парсинга теста:", e, "\nJSON:", jsonText);
     return [];
   }
 }
