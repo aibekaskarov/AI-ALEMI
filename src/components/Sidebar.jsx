@@ -4,6 +4,7 @@ import { ReactComponent as HomeIcon } from '../assets/icon/homeIcon.svg';
 import { ReactComponent as SettingsIcon } from '../assets/icon/settingsIcon.svg';
 import { ReactComponent as SubjectsIcon } from '../assets/icon/subjects.svg'
 import { ReactComponent as ScheduleIcon } from '../assets/icon/schedule.svg'
+import { Bot } from "lucide-react";
 
 import logo from '../assets/icon/logoEduTeh.png';
 
@@ -42,6 +43,27 @@ const SideBar = () => {
             </NavLink>
           ))}
         </nav>
+
+         <div className={styles.cardTgBot}>
+          <div className={styles.headerTg}>
+            <Bot className={styles.iconTg} />
+            <h3>ИИ Ассистент</h3>
+          </div>
+
+          <p className={styles.textTg}>
+            Получите помощь с лекциями, тестами и другим
+          </p>
+
+          <a
+            href="https://t.me/eduaikzbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.buttonTg}
+          >
+            Бот
+          </a>
+        </div>
+
       </div>
       <button className={styles.logout}>
           <LogOutIcon />
