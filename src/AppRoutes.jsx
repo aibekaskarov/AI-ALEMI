@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Subjects from './pages/Subjects';
 import Settings from './pages/Settings';
 import Schedule from './pages/Schedule';
+import CreateTest from './pages/CreateTest';
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -16,7 +17,8 @@ const AppRoutes = () => {
         { path: 'dashboard', element: <Dashboard /> },
         { path: 'subjects', element: <Subjects /> },
         { path: 'schedule', element: <Schedule />},
-        { path: 'settings', element: <Settings /> }
+        { path: 'settings', element: <Settings /> },
+        { path: 'test/add', element: <CreateTest /> }
       ],
     }
   ]);
