@@ -4,61 +4,61 @@ import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 const events = [
   {
     id: 1,
-    title: "Machine Learning",
-    type: "Lecture",
-    day: "Monday",
+    title: "Машинное обучение",
+    type: "Лекция",
+    day: "Понедельник",
     startTime: "09:00",
     endTime: "11:00",
     color: "#5A54F1",
   },
   {
     id: 2,
-    title: "Data Science",
-    type: "Lecture",
-    day: "Tuesday",
+    title: "Анализ данных",
+    type: "Лекция",
+    day: "Вторник",
     startTime: "10:00",
     endTime: "11:50",
     color: "#9B5CF6",
   },
   {
     id: 3,
-    title: "Machine Learning",
-    type: "Practice",
-    day: "Wednesday",
+    title: "Машинное обучение",
+    type: "Практика",
+    day: "Среда",
     startTime: "09:00",
     endTime: "11:00",
     color: "#5A54F1",
   },
   {
     id: 4,
-    title: "Web Development",
-    type: "Lecture",
-    day: "Friday",
+    title: "Веб-разработка",
+    type: "Лекция",
+    day: "Пятница",
     startTime: "10:00",
     endTime: "12:00",
     color: "#4A8BFF",
   },
   {
     id: 5,
-    title: "AI Ethics",
-    type: "Seminar",
-    day: "Monday",
+    title: "Этика ИИ",
+    type: "Семинар",
+    day: "Понедельник",
     startTime: "14:00",
     endTime: "15:50",
     color: "#18A57E",
   },
   {
     id: 6,
-    title: "Data Science",
-    type: "Lab",
-    day: "Thursday",
+    title: "Анализ данных",
+    type: "Лабораторная",
+    day: "Четверг",
     startTime: "13:00",
     endTime: "14:50",
     color: "#9B5CF6",
   },
 ];
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+const days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница"];
 const hours = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
 
 const EventCard = ({ event }) => {
@@ -115,10 +115,10 @@ const Schedule = () => {
   return (
     <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "32px", background: "#F9FAFB", minHeight: "100vh" }}>
       <h1 style={{ fontSize: "32px", fontWeight: "700", color: "#1F2937", marginBottom: "4px" }}>
-        Schedule
+        Расписание
       </h1>
       <p style={{ fontSize: "15px", color: "#6B7280", marginBottom: "24px" }}>
-        Manage your teaching schedule
+        Управляйте своим расписанием занятий
       </p>
 
       <div style={{ 
@@ -141,7 +141,7 @@ const Schedule = () => {
         </button>
 
         <span style={{ fontSize: "16px", fontWeight: "600", color: "#1F2937" }}>
-          Nov 18–24, 2024
+          18–24 Ноября, 2024
         </span>
 
         <button style={{
@@ -165,7 +165,7 @@ const Schedule = () => {
           cursor: "pointer",
           fontWeight: "500"
         }}>
-          Today
+          Сегодня
         </button>
 
         <button style={{
@@ -180,13 +180,13 @@ const Schedule = () => {
           marginLeft: "auto"
         }}>
           <Filter size={18} />
-          Filter
+          Фильтр
         </button>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "80px 1fr 300px", gap: "0", background: "white", borderRadius: "12px", overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
         
-        {/* Time Column */}
+        {/* Колонка времени */}
         <div style={{ borderRight: "1px solid #E5E7EB" }}>
           <div style={{ height: "60px", borderBottom: "1px solid #E5E7EB" }}></div>
           {hours.map((time) => (
@@ -206,7 +206,7 @@ const Schedule = () => {
           ))}
         </div>
 
-        {/* Calendar Grid */}
+        {/* Календарная сетка */}
         <div style={{ display: "grid", gridTemplateColumns: `repeat(5, 1fr)`, borderRight: "1px solid #E5E7EB" }}>
           {days.map((day, idx) => (
             <div key={day} style={{ borderRight: idx < 4 ? "1px solid #E5E7EB" : "none" }}>
@@ -248,7 +248,7 @@ const Schedule = () => {
           ))}
         </div>
 
-        {/* Sidebar */}
+        {/* Боковая панель */}
         <div style={{ padding: "24px", background: "#F9FAFB" }}>
           <div style={{ 
             background: "white", 
@@ -257,13 +257,13 @@ const Schedule = () => {
             marginBottom: "16px",
             boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
           }}>
-            <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>Subjects</h3>
+            <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>Предметы</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
-                { name: "Machine Learning", color: "#5A54F1" },
-                { name: "Data Science", color: "#9B5CF6" },
-                { name: "AI Ethics", color: "#18A57E" },
-                { name: "Web Development", color: "#4A8BFF" }
+                { name: "Машинное обучение", color: "#5A54F1" },
+                { name: "Анализ данных", color: "#9B5CF6" },
+                { name: "Этика ИИ", color: "#18A57E" },
+                { name: "Веб-разработка", color: "#4A8BFF" }
               ].map((subject) => (
                 <div key={subject.name} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px" }}>
                   <span style={{
@@ -284,14 +284,15 @@ const Schedule = () => {
             borderRadius: "12px",
             boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
           }}>
-            <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>This Week</h3>
+            <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>Эта неделя</h3>
             <div style={{ fontSize: "14px", color: "#6B7280", lineHeight: "1.8" }}>
-              <p style={{ margin: "8px 0" }}>Total Classes: <b style={{ color: "#1F2937" }}>6</b></p>
-              <p style={{ margin: "8px 0" }}>Teaching Hours: <b style={{ color: "#1F2937" }}>10.5h</b></p>
-              <p style={{ margin: "8px 0" }}>Busiest Day: <b style={{ color: "#1F2937" }}>Monday</b></p>
+              <p style={{ margin: "8px 0" }}>Всего занятий: <b style={{ color: "#1F2937" }}>6</b></p>
+              <p style={{ margin: "8px 0" }}>Часов преподавания: <b style={{ color: "#1F2937" }}>10.5ч</b></p>
+              <p style={{ margin: "8px 0" }}>Самый загруженный день: <b style={{ color: "#1F2937" }}>Понедельник</b></p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
