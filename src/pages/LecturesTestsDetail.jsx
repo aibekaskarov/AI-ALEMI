@@ -90,7 +90,6 @@ const LecturesTestsDetail = () => {
       await lecturesAPI.create(lectureForm);
       await loadData();
       setShowLectureModal(false);
-      alert('Лекция успешно создана!');
     } catch (error) {
       console.error('Ошибка сохранения лекции:', error);
       alert('Ошибка при сохранении лекции');
@@ -110,7 +109,6 @@ const LecturesTestsDetail = () => {
         ...prev,
         text: response.data.content || ''
       }));
-      alert('Контент успешно сгенерирован!');
     } catch (error) {
       console.error('Ошибка генерации лекции:', error);
       alert('Ошибка при генерации лекции с AI');
@@ -162,7 +160,6 @@ const LecturesTestsDetail = () => {
       });
       await loadData();
       setShowTestModal(false);
-      alert('Тест успешно создан!');
     } catch (error) {
       console.error('Ошибка генерации теста:', error);
       alert('Ошибка при генерации теста с AI');
