@@ -37,8 +37,8 @@ export const testsAPI = {
   create: (data) => api.post('/tests', data),
   update: (id, data) => api.put(`/tests/${id}`, data),
   delete: (id) => api.delete(`/tests/${id}`),
-  generateWithAI: (lectureId, options = {}) => 
-    api.post('/ai/tests', { lectureId, ...options }),
+  generateWithAI: (lecture_id, options = {}) => 
+    api.post('/ai/tests', { lecture_id, ...options }),
 };
 
 // ===== TEACHERS =====

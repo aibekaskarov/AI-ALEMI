@@ -253,7 +253,7 @@ app.post('/ai/tests', async (req, res) => {
 
         const newTest = {
             id: Date.now(),
-            lectureId: lecture.id,
+            lecture_id: lecture.id,
             name: `Тест по лекции "${lecture.name}"`,
             questions
         };
