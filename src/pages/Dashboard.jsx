@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
   BookOpen,
@@ -17,6 +18,8 @@ const Dashboard = () => {
   const [lecturesData, setLecturesData] = useState([]);
   const [testsData, setTestsData] = useState([]);
   const [schedulesData, setSchedulesData] = useState([]);
+
+  const navigate = useNavigate();
 
 
   const [stats, setStats] = useState({
@@ -162,10 +165,10 @@ const Dashboard = () => {
       <section className={styles.section}>
         <h2>Быстрые действия</h2>
         <div className={styles.quickActionsGrid}>
-          <QuickActionCard icon={BookOpen} title="Создать предмет" description="Начните новый курс" onClick={() => alert('Создание предмета')} />
-          <QuickActionCard icon={FileText} title="Новая лекция" description="Добавьте материал" onClick={() => alert('Редактор лекции')} />
-          <QuickActionCard icon={ClipboardList} title="Создать тест" description="Проверьте знания" onClick={() => alert('Конструктор тестов')} />
-          <QuickActionCard icon={Sparkles} title="AI Расписание" description="Оптимизируйте время" onClick={handleGenerateSchedule} />
+          <QuickActionCard icon={BookOpen} title="Создать предмет" description="Начните новый курс" onClick={() => navigate(`/subjects`)}  />
+          <QuickActionCard icon={FileText} title="Новая лекция" description="Добавьте материал" onClick={() => navigate(`/subjects`)} />
+          <QuickActionCard icon={ClipboardList} title="Создать тест" description="Проверьте знания" onClick={() => navigate(`/subjects`)} />
+          <QuickActionCard icon={Sparkles} title="AI Расписание" description="Оптимизируйте время" onClick={() => navigate(`/schedule`)} />
         </div>
       </section>
     </div>

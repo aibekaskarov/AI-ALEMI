@@ -81,12 +81,12 @@ export default function Subjects() {
   };
 
   const getLecturesCount = (subjectId) => {
-    return lectures.filter(l => l.subject_id === subjectId).length;
+    return lectures.filter(l => l.subject_id == subjectId).length;
   };
 
   const getTestsCount = (subjectId) => {
-    const subjectLectures = lectures.filter(l => l.subject_id === subjectId);
-    return tests.filter(t => subjectLectures.some(l => l.id === t.lecture_id)).length;
+    const subjectLectures = lectures.filter(l => l.subject_id == subjectId);
+    return tests.filter(t => subjectLectures.some(l => l.id == t.lecture_id)).length;
   };
 
   const handleOpenModal = (subject = null) => {
