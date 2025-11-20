@@ -5,7 +5,7 @@ import { ReactComponent as SettingsIcon } from '../assets/icon/settingsIcon.svg'
 import { ReactComponent as SubjectsIcon } from '../assets/icon/subjects.svg'
 import { ReactComponent as ScheduleIcon } from '../assets/icon/schedule.svg'
 
-import { ReactComponent as LogaIcon } from '../assets/icon/logoIcon.svg';
+import logo from '../assets/icon/logoEduTeh.png';
 
 import { ReactComponent as LogOutIcon } from '../assets/icon/logoutIcon.svg';
 
@@ -23,7 +23,7 @@ const SideBar = () => {
     <div className={styles.sidebar}>
       <div className={styles.block}>
         <div className={styles.head}>
-          <LogaIcon />
+          <img src={logo} alt="" />
         </div>
         <nav className={styles.nav}>
           {links.map(({ to, label, icon }) => (
