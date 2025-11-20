@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon } from '../assets/icon/homeIcon.svg';
 import { ReactComponent as SettingsIcon } from '../assets/icon/settingsIcon.svg';
+import { ReactComponent as SubjectsIcon } from '../assets/icon/subjects.svg'
+import { ReactComponent as ScheduleIcon } from '../assets/icon/schedule.svg'
 
 import { ReactComponent as LogaIcon } from '../assets/icon/logoIcon.svg';
 
@@ -12,7 +14,8 @@ import styles from '../css/sideBar.module.css';
 const SideBar = () => {
   const links = [
     { to: '/dashboard', label: 'Главная', icon: <HomeIcon />},
-    { to: '/schedule', label: 'Расписание'},
+    { to: '/schedule', label: 'Расписание', icon: <ScheduleIcon />},
+    { to: '/subjects', label: 'Предметы', icon: <SubjectsIcon />},
     { to: '/settings', label: 'Настройки', icon: <SettingsIcon />}
   ];
 
