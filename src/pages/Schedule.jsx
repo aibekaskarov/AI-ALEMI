@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Filter, Sparkles, Loader, Trash2 } from 'lucide-react';
 import { schedulesAPI, teachersAPI, subjectsAPI, lecturesAPI } from '../services/api';
 
+<<<<<<< HEAD
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 const DAY_NAMES = {
   'Monday': 'Понедельник',
@@ -13,6 +14,69 @@ const DAY_NAMES = {
 const HOURS = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
 
 const EventCard = ({ event, subjectColor }) => {
+=======
+const events = [
+  {
+    id: 1,
+    title: "Машинное обучение",
+    type: "Лекция",
+    day: "Понедельник",
+    startTime: "09:00",
+    endTime: "11:00",
+    color: "#5A54F1",
+  },
+  {
+    id: 2,
+    title: "Анализ данных",
+    type: "Лекция",
+    day: "Вторник",
+    startTime: "10:00",
+    endTime: "11:50",
+    color: "#9B5CF6",
+  },
+  {
+    id: 3,
+    title: "Машинное обучение",
+    type: "Практика",
+    day: "Среда",
+    startTime: "09:00",
+    endTime: "11:00",
+    color: "#5A54F1",
+  },
+  {
+    id: 4,
+    title: "Веб-разработка",
+    type: "Лекция",
+    day: "Пятница",
+    startTime: "10:00",
+    endTime: "12:00",
+    color: "#4A8BFF",
+  },
+  {
+    id: 5,
+    title: "Этика ИИ",
+    type: "Семинар",
+    day: "Понедельник",
+    startTime: "14:00",
+    endTime: "15:50",
+    color: "#18A57E",
+  },
+  {
+    id: 6,
+    title: "Анализ данных",
+    type: "Лабораторная",
+    day: "Четверг",
+    startTime: "13:00",
+    endTime: "14:50",
+    color: "#9B5CF6",
+  },
+];
+
+const days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница"];
+const hours = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
+
+const EventCard = ({ event }) => {
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
   const timeToMinutes = (time) => {
     const [h, m] = time.split(':').map(Number);
     return h * 60 + m;
@@ -312,12 +376,21 @@ const Schedule = () => {
   const enrichedEvents = getEnrichedEvents();
 
   return (
+<<<<<<< HEAD
     <div style={{ maxWidth: '1600px', margin: '0 auto', padding: '32px', background: '#F9FAFB', minHeight: '100vh' }}>
       <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1F2937', marginBottom: '4px' }}>
         Расписание
       </h1>
       <p style={{ fontSize: '15px', color: '#6B7280', marginBottom: '24px' }}>
         Управление расписанием занятий
+=======
+    <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "32px", background: "#F9FAFB", minHeight: "100vh" }}>
+      <h1 style={{ fontSize: "32px", fontWeight: "700", color: "#1F2937", marginBottom: "4px" }}>
+        Расписание
+      </h1>
+      <p style={{ fontSize: "15px", color: "#6B7280", marginBottom: "24px" }}>
+        Управляйте своим расписанием занятий
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
       </p>
 
       <div style={{ 
@@ -339,6 +412,7 @@ const Schedule = () => {
           <ChevronLeft size={18} />
         </button>
 
+<<<<<<< HEAD
         <span style={{ fontSize: '16px', fontWeight: '600', color: '#1F2937' }}>
           {new Date(schedule.week_start).toLocaleDateString('ru-RU', { 
             month: 'short', 
@@ -348,6 +422,10 @@ const Schedule = () => {
             day: 'numeric',
             year: 'numeric'
           })}
+=======
+        <span style={{ fontSize: "16px", fontWeight: "600", color: "#1F2937" }}>
+          18–24 Ноября, 2024
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
         </span>
 
         <button style={{
@@ -374,6 +452,7 @@ const Schedule = () => {
           Сегодня
         </button>
 
+<<<<<<< HEAD
         <button
           onClick={() => setShowGenerateModal(true)}
           style={{
@@ -411,15 +490,37 @@ const Schedule = () => {
         >
           <Trash2 size={18} />
           Удалить
+=======
+        <button style={{
+          padding: "8px 16px",
+          background: "white",
+          border: "1px solid #E5E7EB",
+          borderRadius: "8px",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          marginLeft: "auto"
+        }}>
+          <Filter size={18} />
+          Фильтр
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
         </button>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr 300px', gap: '0', background: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
         
+<<<<<<< HEAD
         {/* Time Column */}
         <div style={{ borderRight: '1px solid #E5E7EB' }}>
           <div style={{ height: '60px', borderBottom: '1px solid #E5E7EB' }}></div>
           {HOURS.map((time) => (
+=======
+        {/* Колонка времени */}
+        <div style={{ borderRight: "1px solid #E5E7EB" }}>
+          <div style={{ height: "60px", borderBottom: "1px solid #E5E7EB" }}></div>
+          {hours.map((time) => (
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
             <div
               key={time}
               style={{
@@ -436,10 +537,17 @@ const Schedule = () => {
           ))}
         </div>
 
+<<<<<<< HEAD
         {/* Calendar Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', borderRight: '1px solid #E5E7EB' }}>
           {DAYS.map((day, idx) => (
             <div key={day} style={{ borderRight: idx < 4 ? '1px solid #E5E7EB' : 'none' }}>
+=======
+        {/* Календарная сетка */}
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(5, 1fr)`, borderRight: "1px solid #E5E7EB" }}>
+          {days.map((day, idx) => (
+            <div key={day} style={{ borderRight: idx < 4 ? "1px solid #E5E7EB" : "none" }}>
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
               <div style={{
                 height: '60px',
                 display: 'flex',
@@ -478,8 +586,13 @@ const Schedule = () => {
           ))}
         </div>
 
+<<<<<<< HEAD
         {/* Sidebar */}
         <div style={{ padding: '24px', background: '#F9FAFB' }}>
+=======
+        {/* Боковая панель */}
+        <div style={{ padding: "24px", background: "#F9FAFB" }}>
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
           <div style={{ 
             background: 'white', 
             padding: '20px', 
@@ -487,10 +600,22 @@ const Schedule = () => {
             marginBottom: '16px',
             boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
           }}>
+<<<<<<< HEAD
             <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px' }}>Предметы</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {getUniqueSubjects().map((subject, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}>
+=======
+            <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>Предметы</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {[
+                { name: "Машинное обучение", color: "#5A54F1" },
+                { name: "Анализ данных", color: "#9B5CF6" },
+                { name: "Этика ИИ", color: "#18A57E" },
+                { name: "Веб-разработка", color: "#4A8BFF" }
+              ].map((subject) => (
+                <div key={subject.name} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px" }}>
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
                   <span style={{
                     width: '12px',
                     height: '12px',
@@ -509,14 +634,23 @@ const Schedule = () => {
             borderRadius: '12px',
             boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
           }}>
+<<<<<<< HEAD
             <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px' }}>Эта неделя</h3>
             <div style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.8' }}>
               <p style={{ margin: '8px 0' }}>Всего занятий: <b style={{ color: '#1F2937' }}>{getTotalClasses()}</b></p>
               <p style={{ margin: '8px 0' }}>Часов преподавания: <b style={{ color: '#1F2937' }}>{getTotalHours()}ч</b></p>
               <p style={{ margin: '8px 0' }}>Самый загруженный день: <b style={{ color: '#1F2937' }}>{getBusiestDay()}</b></p>
+=======
+            <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>Эта неделя</h3>
+            <div style={{ fontSize: "14px", color: "#6B7280", lineHeight: "1.8" }}>
+              <p style={{ margin: "8px 0" }}>Всего занятий: <b style={{ color: "#1F2937" }}>6</b></p>
+              <p style={{ margin: "8px 0" }}>Часов преподавания: <b style={{ color: "#1F2937" }}>10.5ч</b></p>
+              <p style={{ margin: "8px 0" }}>Самый загруженный день: <b style={{ color: "#1F2937" }}>Понедельник</b></p>
+>>>>>>> 372c2463d5881e4da1b1fae14f4327d0bf870bdd
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Generate Modal */}
